@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--  search/find feature; not used at this time but may get added later, so keep it here, commented out:
+    <item android:id="@+id/action_search"
+          android:icon="@android:drawable/ic_menu_search"
+          android:title="@string/action_bar_search"
+          android:showAsAction="ifRoom"
+          android:actionViewClass="android.widget.SearchView" />
+     -->
+     
+     <item android:id="@+id/action_clear"
+          android:icon="@android:drawable/ic_menu_delete"
+          android:title="@string/action_bar_clear"
+          android:onClick="onClearLog"  
+          android:showAsAction="always|withText" />
+
+     <item android:id="@+id/action_loglevel"
+          android:icon="@android:drawable/ic_menu_preferences"
+          android:title="@string/action_bar_loglevel" 
+          android:showAsAction="always|withText" >
+        <menu>
+            <group android:checkableBehavior="single">
+            <item android:id="@+id/action_loglevel_none"
+                   android:icon="@android:drawable/btn_minus"  
+                  android:title="@string/action_bar_loglevel_none"
+                  android:onClick="onLogLevel" />
+            <item android:id="@+id/action_loglevel_error"
+                  android:icon="@drawable/error_icon"
+                  android:title="@string/action_bar_loglevel_error"
+                  android:onClick="onLogLevel" />
+            <item android:id="@+id/action_loglevel_warning"
+                  android:icon="@drawable/warning_icon"
+                  android:title="@string/action_bar_loglevel_warning"
+                  android:onClick="onLogLevel" />
+            <item android:id="@+id/action_loglevel_info"
+                  android:icon="@drawable/info_icon"
+                  android:title="@string/action_bar_loglevel_info"
+                  android:onClick="onLogLevel" />
+            <item android:id="@+id/action_loglevel_debug"
+                  android:icon="@drawable/debug_icon"
+                  android:title="@string/action_bar_loglevel_debug"
+                  android:onClick="onLogLevel" />
+             <!-- "all" is functionaly the same as debug -->
+            <item android:id="@+id/action_loglevel_all"
+                   android:icon="@android:drawable/btn_plus"  
+                  android:title="@string/action_bar_loglevel_all"
+                  android:onClick="onLogLevel" />
+             </group>
+         </menu>
+      </item>
+      
+  	  <item android:id="@+id/action_export"
+          android:icon="@android:drawable/ic_menu_save"
+          android:title="@string/action_bar_export" 
+          android:onClick="onSaveToLog"
+          android:showAsAction="ifRoom|withText" />
+  	  
+      <item android:id="@+id/action_refresh"
+          android:icon="@android:drawable/ic_menu_rotate"
+          android:title="@string/action_bar_refresh" 
+          android:showAsAction="ifRoom|withText" />
+  	  
+      <item android:id="@+id/action_filter"
+          android:icon="@android:drawable/ic_menu_zoom"
+          android:title="@string/action_bar_filter" 
+          android:showAsAction="ifRoom|withText" >
+        <menu>
+            <group android:checkableBehavior="single">
+            <item android:id="@+id/action_filter_error"
+                  android:icon="@drawable/error_icon"
+                  android:title="@string/action_bar_filter_error"
+                  android:onClick="onFilter" />
+            <item android:id="@+id/action_filter_warning"
+                  android:icon="@drawable/warning_icon"
+                  android:title="@string/action_bar_filter_warning"
+                  android:onClick="onFilter" />
+            <item android:id="@+id/action_filter_info"
+                  android:icon="@drawable/info_icon"
+                  android:title="@string/action_bar_filter_info"
+                  android:onClick="onFilter" />
+            <item android:id="@+id/action_filter_debug"
+                  android:icon="@drawable/debug_icon"
+                  android:title="@string/action_bar_filter_debug"
+                  android:onClick="onFilter" />
+            <item android:id="@+id/action_filter_all"
+                   android:title="@string/action_bar_filter_all"
+                  android:onClick="onFilter" />
+            </group>
+        </menu>
+      </item>
+<!--      
+    <item android:id="@+id/action_sort"
+          android:icon="@android:drawable/ic_menu_sort_by_size"
+          android:title="@string/action_bar_sort"
+          android:showAsAction="ifRoom">
+        <menu>
+            <item android:id="@+id/action_sort_size"
+                  android:icon="@android:drawable/ic_menu_sort_by_size"
+                  android:title="@string/action_bar_sort_size"
+                  android:onClick="onSort" />
+            <item android:id="@+id/action_sort_alpha"
+                  android:icon="@android:drawable/ic_menu_sort_alphabetically"
+                  android:title="@string/action_bar_sort_alpha"
+                  android:onClick="onSort" />
+        </menu>
+    </item>
+-->    
+</menu>
+

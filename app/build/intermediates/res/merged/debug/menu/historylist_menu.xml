@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--  search/find feature; not used at this time but may get added later, so keep it here, commented out:
+    <item android:id="@+id/action_search"
+          android:icon="@android:drawable/ic_menu_search"
+          android:title="@string/action_bar_search"
+          android:showAsAction="ifRoom"
+          android:actionViewClass="android.widget.SearchView" />
+     -->
+     
+     <item android:id="@+id/action_clear"
+          android:icon="@android:drawable/ic_menu_delete"
+          android:title="@string/action_bar_clear"
+          android:onClick="onClearHistory"  
+          android:showAsAction="always|withText" />
+
+ <!--       
+  	  <item android:id="@+id/action_refresh"
+          android:icon="@android:drawable/ic_menu_rotate"
+          android:title="@string/action_bar_refresh" 
+          android:showAsAction="ifRoom|withText" />
+  -->      
+ 
+</menu>

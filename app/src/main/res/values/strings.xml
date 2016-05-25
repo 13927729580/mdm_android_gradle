@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Mobile Manager</string>
+    <string name="app_name_by">by Lightspeed Systems</string>
+    <string name="app_description">Mobile Device Manager by Lightspeed Systems</string>
+    <string name="app_entry_hint">Hint: Click on the image to enter Mobile Manager.</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="dummy_button">Dummy Button</string>
+
+    <!--  account strings: -->
+    <!--  <string name="acct_mdm_name">Mobile Manager</string> -->
+    
+    <!-- not used anywhere for now:
+    <string name="acct_mdm_name">Mobile Manager Account</string>
+    <string name="acct_email_name">Mobile Manager Email Account</string>
+    <string name="acct_exchange_name">Mobile Manager Exchange Account</string>
+     -->
+     
+    <!-- objects: -->
+    <string name="application">Application</string>
+    <string name="user">User</string>
+    <string name="device">Device</string>
+    <string name="passcode">Passcode</string>
+    <string name="profile">Profile</string>
+    <string name="config">Configuration</string>
+    
+    <!--  labels: -->
+    <string name="label_none">None</string>
+    
+    <string name="mdmweb_admin_home">Mobile Manager Browser</string>
+    <string name="mbcweb_home">My Big Campus</string>
+    <string name="main_beginbutton">Enter</string>
+    
+    <string name="button_login">Login</string>
+    <string name="button_logout">Logout</string>
+    <string name="button_yes">Yes</string>
+    <string name="button_no">No</string>
+    <string name="button_go">Go</string>
+    <string name="button_stop">Stop</string>
+    <string name="button_done">Done</string>
+    <string name="button_enroll">Enroll</string>
+    <string name="button_sync">Sync</string>
+    <string name="button_browse">Browse</string>
+    <string name="button_addcount">Add Account</string>
+    <string name="button_updatecheck">Check For Mobile Manager Updates</string>
+    <string name="msg_updatecheck_inprogress">Checking for Mobile Manager updates...</string>
+    <string name="msg_updatecheck_updating">Installing Mobile Manager updates...</string>
+    <string name="msg_updatecheck_complete">Mobile Manager is up to date.</string>
+    <string name="msg_update_error">Mobile Manager update error.</string>
+    <string name="mdm_errormsg_title">Mobile Manager Error</string>
+    
+    <string name="login_title">Administrator Login to Mobile Manager</string>
+    <string name="logindenied">Login denied.</string>
+    <string name="loginsucceeded">Login OK.</string>
+    <string name="loginerror">Login error. </string>
+    <string name="logininprogress">Logging in...</string>
+    <string name="msg_missingusername">Enter your User Name</string>
+    <string name="msg_missingpassword">Enter your password</string>
+    <string name="msg_accountalreadyexists">Account already exists. Enter a different name.</string>
+    <string name="msg_accountadded">Account added.</string>
+    <string name="msg_accountadd_error">Error adding Account.</string>
+    
+    <string name="serverurl_dlg_title">Server URL</string>
+    <string name="url_error_invalid">Invalid URL.</string>
+    
+ <!--    <string name="error_wifi_not_enabled">WiFi is disabled. Ensure WiFi is ready.</string> -->
+    <string name="wifi_starting">Starting Wifi...</string>
+    
+    <string name="orgname_missing_placeholder">(Device is not enrolled)</string>
+    <string name="enrollcode">Enrollment Code:</string>
+    <string name="enrollcode_hint">Enter the enrollment code.</string>
+    <string name="enrollserver">Enrollment Server:</string>
+    <string name="enroll_title">Enroll Device</string>
+    <string name="enroll_edit_hint">Click to enroll or to change enrollment.</string>
+    <string name="enrollcode_missing">Missing enrollment code.</string>
+    <string name="enrollcode_invalid">Invalid enrollment code.</string>
+    <string name="enrollsvr_missing">Missing enrollment server url.</string>
+    <string name="enrollsvr_invalid">Invalid enrollment server url.</string>
+    <string name="status_enrolling">Enrolling...</string>
+    
+    <string name="status_initializing">Initializing...</string>
+    <string name="status_loading">Loading...</string>    
+    <string name="status_error">Error:</string>
+    <string name="status_never">Never</string>
+    <string name="status_installing">Installing</string>
+    <string name="status_installpending">Install pending</string>
+    <string name="status_installdownloading">Downloading installer...</string>
+    <string name="status_installed">Installed</string>
+    <string name="status_installfailed">Install failed</string>
+    <string name="status_installcanceled">Install canceled</string>
+    <string name="status_updating">Updating</string>
+    <string name="status_updatepending">Update pending</string>
+    <string name="status_updatedownloading">Downloading updates...</string>
+    <string name="status_updated">Updated</string>
+    <string name="status_updatefailed">Update failed</string>
+    <string name="status_updatecanceled">Update canceled</string>
+    <string name="status_uninstalling">Uninstalling</string>
+    <string name="status_uninstallpending">Uninstall pending</string>
+    <string name="status_uninstalled">Uninstalled</string>
+    <string name="status_uninstallfailed">Uninstall failed</string>
+    <string name="status_uninstallcanceled">Uninstall canceled</string>
+    <string name="status_appuptodate">Mobile Manager is up to date.</string>
+    <string name="status_appupdating">Mobile Manager is updating.</string>
+    <string name="status_deviceadminneeded">Device Administrator must be active to run this application.\nPlease enable Device Administration and restart Mobile Manager.</string>
+    
+    <string name="device_admin_activate_title">Mobile Manager Device Administration</string>
+    <string name="device_admin_activate_description">Mobile Manager is requesting permission to manage this device.</string>
+    <string name="device_admin_disable_warning">Stop allowing Mobile Manager to manage this device?</string>
+    
+    
+    <string name="gcmerror_msgtitle">Configuration Error - Google Cloud Messaging</string>
+    <string name="gcmerror_nogsf">Google Services Framework is requiured but was not found.\nMobile Manager will exit.</string>
+    <string name="gcmerror_gsfinsstallfailed">Google Services Framework is requiured but was not found and was unable to be installed.\nMobile Manager will exit.</string>
+    
+    <string name="gcmerror_reboottitle">Device Reboot Is Needed</string>
+    <string name="gcm_reboot_after_gsfintall">Successfully installed Google Services Framework.\nPlease shutdown and restart the device.</string>
+    <string name="gcmerror_permissions">A Device Permissions Error was detected.\nPlease shutdown and restart the device and try again.</string>
+    <string name="gcmerror_permissions_resintallmanually">An internal error was detected.\nMobile Manager must be reinstalled.</string>
+    <string name="gcmerror_permissions_resintallprompt">An internal permissions error was detected.\nMobile Manager will attempt to reinstall itself.\nIf reinstall fails, please shutdown and restart, then reinstall Mobile Manager.\n\nOpen Mobile Manager after completing the reinstall.</string>
+    <string name="gcmerror_msgtitle_reinstallmdm">Reinstall Mobile Manager</string>
+    
+    <string name="gcmerror_manifest">The application manifest has an error.\nMobile Manager will exit.</string>
+    <string name="gcmerror_authfailed">Google Cloud Messaging authentication error.</string>
+    <string name="gcmerror_authfailed_reboot">Google Cloud Messaging authentication error.\nPlease shutdown and restart the device and try again.</string>
+    <string name="gcmerror_noaccount">Gmail or Google account not found on this device.\nPlease create an account.</string>
+    <string name="gcmerror_unrecoverable">Unrecoverable error installing or initializing GCM.\nMobile Manager will exit.</string>
+    
+    <string name="gcmstatus_gsf_dowloading">Downloading Google Services Framework...</string>
+    <string name="gcmstatus_gsf_installing">"Installing Google Services Framework..."</string>
+    <string name="gcmstatus_gsf_installed">"Installed Google Services Framework."</string>
+    <string name="gcmstatus_gsf_installfailed">"Failed to install Google Services Framework."</string>
+    <string name="gcmstatus_gcm_init">"Initializing Google Cloud Messaging..."</string>
+    <string name="gcmerror_service_not_available">"Google Cloud Messaging error (service not available); retrying..."</string>
+    
+    
+    <!--  
+    <string name="error_config">Please set the %1$s constant and recompile the app.</string>
+    <string name="already_registered">Device is already registered on server.</string>
+    <string name="gcm_registered">From GCM: device successfully registered!</string>
+    <string name="gcm_unregistered">From GCM: device successfully unregistered!</string>
+    <string name="gcm_message">From GCM: you got message!</string>
+    <string name="gcm_error">From GCM: error (%1$s).</string>
+    <string name="gcm_recoverable_error">From GCM: recoverable error (%1$s).</string>
+    -->
+    <string name="gcm_deleted">From GCM: server deleted %1$d pending messages!</string>
+    
+    <!-- not used?:    
+    <string name="server_registering">Trying (attempt %1$d/%2$d) to register device on Demo Server.</string>
+    <string name="server_registered">From Demo Server: successfully added device!</string>
+    <string name="server_unregistered">From Demo Server: successfully removed device!</string>
+    <string name="server_register_error">Could not register device on Demo Server after %1$d attempts.</string>
+    <string name="server_unregister_error">Could not unregister device on Demo Server (%1$s).</string>
+    -->
+    
+    <!-- Menu options: -->
+    <string name="options_clear">Clear</string>
+    <string name="action_bar_loglevel">Log...</string>
+     <string name="action_bar_loglevel_none">Nothing (Logging is Off)</string>
+     <string name="action_bar_loglevel_error">Errors only</string>
+     <string name="action_bar_loglevel_warning">Warnings and Errors</string>
+     <string name="action_bar_loglevel_info">Information, Warnings, and Errors</string>
+     <string name="action_bar_loglevel_debug">Debug and all the above</string> 
+     <string name="action_bar_loglevel_all">Everything</string>
+    <string name="action_bar_clear">Clear</string>
+    <string name="action_bar_search">Search</string>
+    <string name="action_bar_sort">Sort</string>
+    <string name="action_bar_export">Export</string>
+    <string name="action_bar_refresh">Refresh</string>
+    <string name="action_bar_filter">View</string>
+     <string name="action_bar_filter_error">Errors</string>
+     <string name="action_bar_filter_warning">Warnings</string>
+     <string name="action_bar_filter_info">Information</string>
+     <string name="action_bar_filter_debug">Debug</string>
+     <string name="action_bar_filter_all">All</string>
+   <string name="options_about">About</string>
+     
+    <!-- (these may not be needed:) -->
+    <string name="options_register">Register</string>
+    <string name="options_unregister">Unregister</string>
+    <string name="options_exit">Exit</string>
+        
+    <string name="clearlog_confirm_title">Clear Log Confirmation</string>
+    <string name="clearlog_confirm_msg">Clear all log entries?</string>
+    <string name="clearhistory_confirm_title">Clear History Confirmation</string>
+    <string name="clearhistory_confirm_msg">Clear all history entries?</string>
+    
+    <string name="menulist_settings">Settings</string>
+    <string name="menulist_deviceinfo">Device Information</string>
+    <string name="menulist_apps">Managed Apps</string>
+    <string name="menulist_history">History</string>
+    <string name="menulist_diagnosticslogging">Diagnostic Logging</string>
+    <string name="menulist_diagnostics">Diagnostics and Troubleshooting</string>
+        <string name="menulist_servertest">   Server Communcations Test</string>
+    	<string name="menulist_logging"   >   Logging</string>
+    
+    <string name="menulist_about">About Mobile Manager</string>
+    
+    <string name="settingslist_servergroup">Mobile Manager Server</string>
+     <string name="settingslist_serveraddress">Network Address</string>
+     <string name="settingslist_serveraddress_summary">This is the URL of the server.</string>
+     <string name="settingslist_serveraddress_dlgtitle">Enter the server address.</string>
+     <string name="settingslist_serverport">Network Port</string>
+     <string name="settingslist_serverport_summary">This is the port number on the server.</string>
+     <string name="settingslist_serverport_dlgtitle">Enter the server port number.</string>
+     <string name="settingslist_globalproxy">Global Proxy</string>
+     <string name="settingslist_globalproxy_summary">Proxy server for all network connections.</string>
+     <string name="settingslist_servertest">Server Test</string>
+     <string name="settingslist_servertest_summary">Press the button to test server connectivity.</string>
+     <string name="settingslist_servertest_btnlabel">Test</string>
+    <string name="settingslist_preferencesgroup">Preferences</string>
+     <string name="settingslist_displaynotif">Display Notification Messages</string>
+      <string name="settingslist_displaynotif_summary">Enables displaying MDM popup notification messages.</string>
+    <string name="settingslist_ownergroup">Enrollment Ownership</string>
+     <string name="settingslist_assettag">Asset Tag</string>
+     <string name="settingslist_assettag_summary">Asset tag assigned to the device.</string>
+     <string name="settingslist_assettag_dlgtitle">Enter the asset tag.</string>
+     <string name="settingslist_org">Organization</string>
+     <string name="settingslist_org_summary">Organization the device belongs to.</string>
+     <string name="settingslist_parentname">Parent Name</string>
+     <string name="settingslist_parentname_summary">Parent the device belongs to.</string>
+     <string name="settingslist_parenttype">Parent Type</string>
+     <string name="settingslist_parenttype_summary">Type of parent the device belongs to.</string>
+    <string name="settingslist_updatecheck">Automatically check for updates</string> 
+     <string name="settingslist_updatecheck_summary">When to check for updates to Mobile Manager.</string>
+	 <string name="settingslist_updatecheck_dialog">Automatically Check For Updates</string> 
+     <string name="settingslist_update_never">Never</string>
+     <string name="settingslist_update_daily">Daily</string>
+     <string name="settingslist_update_weekly">Weekly</string>
+     <string name="settingslist_update_monthly">Monthly</string>
+     <string name="settingslist_update_quarterly">Quarterly</string>
+     <string name="settingslist_update_yearly">Yearly</string>
+     
+    <string name="deviceinfo_title">Device Information</string>
+    <string name="deviceinfo_identification">Identification</string>
+     <string name="deviceinfo_udid">UDID</string>
+     <string name="deviceinfo_udidsummary">Unique Device Identifier</string>
+     <string name="deviceinfo_serialnum">Serial Number</string>
+    <string name="deviceinfo_status">Status</string>
+     <string name="deviceinfo_lastsync">Last sync</string>
+     <string name="deviceinfo_nextsync">Next scheduled sync</string>
+     <string name="deviceinfo_batterylevel">Battery</string>
+    <string name="deviceinfo_oscategory">Operating System</string>
+     <string name="deviceinfo_osversion">Version</string>
+     <string name="deviceinfo_osbuild">Build</string>
+     <string name="deviceinfo_ossdkversion">SDK Version</string>
+     <string name="deviceinfo_osbootloader">Bootloader Version</string>
+    <string name="deviceinfo_deviceproduct">Product</string>
+     <string name="deviceinfo_brand">Brand</string>
+     <string name="deviceinfo_model">Model</string>
+     <string name="deviceinfo_manufacturer">Manufacturer</string>
+	<!-- not used:
+       <string name="deviceinfo_devname">Name</string>
+       <string name="deviceinfo_display">Display</string>
+       <string name="deviceinfo_product">Product</string>
+    -->
+    
+    <string name="appdetail_title">Application Details</string>
+  
+    <string name="history_title">MDM Activity History</string>
+
+    <string name="filesavedlg_title">Save To File</string>
+    <string name="filesavedlg_location">Location:</string>
+    <string name="filesavedlg_filename">File Name:</string>    
+    <string name="logexportdlg_title">Export Log To File</string>
+    <string name="logexportdlg_subtitle">Copies log contents to a file.</string>
+    <string name="filesave_error_title">File Save Error</string>
+    <string name="filesave_overwriteconfirm_title">File Exists Warning</string>
+    <string name="filesave_msg_overwriteconfirm">The file exists. Overwrite and replace the existing file?</string>
+    <string name="filesave_completed_title">File Save</string>
+    <string name="filesave_error_filename">File name is missing or invalid.</string> 
+    
+    
+    <string name="diaglist_servertest">Server Test</string>
+    <string name="diaglist_logging">Logging</string>
+    <string name="diaglist_resetgcm">Reset Google Registration</string>
+    <string name="menulist_title">Select an item</string>
+    <string name="logging_title">Logging</string>
+    <string name="all">*</string>
+    
+    <string name="appversion">Version:</string>
+    <string name="installedondate">Installed:</string>
+    <string name="updatedondate">Last Updated:</string>
+    
+    <string name="internalerror">Internal error.</string>
+        
+    <string name="servertest_toUrl">Send test message to:</string>
+    <string name="servertest_pass">Test succeeded.</string>
+    <string name="servertest_fail">Test failed.</string>
+    <string name="servertest_interrupted">Test interrupted.</string>
+    
+    <!-- notification messages: -->
+    <string name="notif_passcodecleared">Passcode cleared</string>
+    <string name="notif_passcodereset">Passcode reset</string>
+    <string name="notif_passcodeexpired">Passcode expired</string>
+    <string name="notif_logexported_ok">Log was exported successfully.</string>
+    <string name="notif_filesaved_ok">File was saved successfully.</string>
+    
+    <!-- event messages and strings: -->
+    <string name="event_devicelock">Device was locked.</string>
+    <string name="event_configset">Organization configuration settings were applied.</string>
+    <string name="event_profileset">Profile settings were applied.</string>
+    <string name="event_passcodeexpirenow">Passcode set to expire immediately.</string>
+    <string name="event_passcodeexpirelater">Passcode set to expire in %d minutes.</string>
+    <string name="event_appinstalled">App installed.</string>
+    <string name="event_appinstallcancelled">App install cancelled by user.</string>
+    <string name="event_appinstallfailed">App install failed.</string>
+    <string name="event_appupdated">App updated.</string>
+    <string name="event_appupdatecancelled">App update cancelled by user.</string>
+    <string name="event_appupdatefailed">App update failed.</string>
+    <string name="event_appuninstalled">App uninstalled.</string>
+    <string name="event_appuninstallcancelled">App uninstall cancelled by user.</string>
+    <string name="event_appuninstallfailed">App uninstall failed.</string>
+    <string name="event_mdmupdatestarted">Mobile Manager version update started.</string>
+    
+    <!-- instrumentation/diagnostics detail messages: -->
+    <string name="instrumentation_notenabled">Instrumentation not enabled.</string>
+    <string name="instrumentation_svrsending">Sending request (will time-out in %d seconds)...</string>
+    <string name="instrumentation_svrreading">Reading request (will time-out in %d seconds)...</string>
+    <string name="instrumentation_svrsent">Request sent...</string>
+    <string name="instrumentation_svrread">Response read...</string>
+    <string name="instrumentation_svrstarted">Started...</string>
+    <string name="instrumentation_svrfinished">Finished.</string>
+    <string name="instrumentation_summarytime">Processing time: %d ms.</string>
+    
+</resources>

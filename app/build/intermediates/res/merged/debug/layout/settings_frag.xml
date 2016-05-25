@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+            android:title="@string/settingslist_servergroup">
+       <com.lightspeedsystems.mdm.util.EditTextPrefView
+                android:key="MDMSERVER_ADDRESS"
+                android:title="@string/settingslist_serveraddress"
+                android:summary="@string/settingslist_serveraddress_summary"
+                android:dialogTitle="@string/settingslist_serveraddress_dlgtitle"
+                android:widgetLayout="@layout/textvaluepref_widget" />        
+       <com.lightspeedsystems.mdm.util.EditTextPrefView
+                android:key="MDMSERVER_PORT"
+                android:title="@string/settingslist_serverport"
+                android:summary="@string/settingslist_serverport_summary"
+                android:dialogTitle="@string/settingslist_serverport_dlgtitle"
+             	android:widgetLayout="@layout/textvaluepref_widget" />
+       <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="GLOBAL_PROXY"
+                android:persistent="false"
+                android:title="@string/settingslist_globalproxy"
+                android:summary="@string/settingslist_globalproxy_summary"
+                android:widgetLayout="@layout/textvaluepref_widget" />       
+       <com.lightspeedsystems.mdm.util.ButtonPrefView
+                android:key="MDMSERVER_TESTBUTTON"
+                android:persistent="false"
+                android:title="@string/settingslist_servertest"
+                android:summary="@string/settingslist_servertest_summary"
+              	android:widgetLayout="@layout/buttonpref_widget" />
+	</PreferenceCategory>       
+	
+	<PreferenceCategory
+            android:title="@string/settingslist_preferencesgroup">
+       <CheckBoxPreference
+          		android:key="DISPLAYNOTIFS"
+                android:persistent="false"
+                android:title="@string/settingslist_displaynotif"
+                android:summary="@string/settingslist_displaynotif_summary" />
+        <com.lightspeedsystems.mdm.util.ListPrefView
+                android:key="UPDATECHECK"
+                android:title="@string/settingslist_updatecheck"
+                android:summary="@string/settingslist_updatecheck_summary"
+                android:dialogTitle="@string/settingslist_updatecheck_dialog" 
+                android:widgetLayout="@layout/textvaluepref_widget" />
+	    
+  <!--  ...some samples of other types, we dont use these, yet.
+       <EditTextPreference
+                android:key="MDMSERVER_PORT"
+                android:title="@string/settingslist_serverport"
+                android:summary="@string/settingslist_serverport_summary"
+                android:dialogTitle="@string/settingslist_serverport_dlgtitle"
+             	android:widgetLayout="@layout/textvaluepref_widget" />
+        <ListPreference
+                android:key="list_preference"
+                android:title="@string/title_list_preference"
+                android:summary="@string/summary_list_preference"
+                android:entries="@array/entries_list_preference"
+                android:entryValues="@array/entryvalues_list_preference"
+                android:dialogTitle="@string/dialog_title_list_preference" />
+
+ 	    <SwitchPreference
+                android:key="DISPLAYNOTIFS"
+                android:persistent="false"
+                android:title="@string/settingslist_displaynotif"
+                android:switchTextOn="@android:string/yes"
+                android:switchTextOff="@android:string/no" ..this shows 'cancel'
+                android:summaryOn="@string/settingslist_displaynotif_on" 
+                android:summaryOff=">Notification messages will not be shown."/>
+ 
+	-->
+	</PreferenceCategory>
+	<PreferenceCategory
+            android:title="@string/settingslist_ownergroup">	    
+	    <com.lightspeedsystems.mdm.util.EditTextPrefView
+                android:key="ASSET_TAG"
+                android:title="@string/settingslist_assettag"
+                android:summary="@string/settingslist_assettag_summary"
+                android:dialogTitle ="@string/settingslist_assettag_dlgtitle"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+	    <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="ORG_ID"
+                android:title="@string/settingslist_org"
+                android:summary="@string/settingslist_org_summary"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+        <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="PARENT_NAME"
+                android:title="@string/settingslist_parentname"
+                android:summary="@string/settingslist_parentname_summary"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+        <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="PARENT_TYPE"
+                android:title="@string/settingslist_parenttype"
+                android:summary="@string/settingslist_parenttype_summary"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+   </PreferenceCategory>
+</PreferenceScreen>

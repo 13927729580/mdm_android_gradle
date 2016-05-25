@@ -1,0 +1,14 @@
+ <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+ <properties>
+ <!-- the following organizational values are to be filled in or provided by the server: -->
+    <entry key="ORG_ID"></entry>
+    <entry key="ORG_NAME"></entry>
+    <entry key="GROUP_ID"></entry>
+    <entry key="GROUP_NAME"></entry>
+ 
+    <entry key="MDMSERVER_ADDRESS">https://devices.lsmdm.com</entry>
+    <entry key="MDMSERVER_PORT"></entry>
+
+    <entry key="DATA_VERSION">3</entry>    
+    
+  </properties>

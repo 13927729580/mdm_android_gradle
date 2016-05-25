@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  - Copyright 2012 Google Inc.
+  -
+  - Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  - use this file except in compliance with the License. You may obtain a copy
+  - of the License at
+  -
+  - http://www.apache.org/licenses/LICENSE-2.0
+  -
+  - Unless required by applicable law or agreed to in writing, software
+  - distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  - WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  - License for the specific language governing permissions and limitations
+  - under the License.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:orientation="vertical"
+    android:background="@color/app_background" >
+
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="54dp"
+        android:layout_gravity="center_horizontal"
+        android:adjustViewBounds="true"
+        android:clickable="true"
+        android:onClick="showNavList"
+        android:src="@drawable/ls_mainlogo" />
+     <TextView
+          android:id="@+id/imagehintText"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:text="@string/app_entry_hint"
+          android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+<!--  
+    <Button
+        android:id="@+id/buttonNav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:onClick="showNavList"
+        android:text="@string/main_beginbutton" />
+    <Button
+        android:id="@+id/buttonEnroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:onClick="showEnroll"
+        android:text="@string/button_enroll" />
+-->
+
+
+
+   <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:onClick="showLogin"
+        android:text="@string/button_login" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal" >
+        
+       <!--   android:src="?android:drawable/edit_text" />
+          android:text="@string/button_enroll" /> -->
+        
+      <TextView
+          android:id="@+id/orgnameText"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/orgname_missing_placeholder"
+          android:textAppearance="?android:attr/textAppearanceMedium" />
+      
+       <ImageView
+          android:id="@+id/buttonEnroll"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="@dimen/dimension_4"
+          android:layout_marginRight="@dimen/dimension_4"
+          android:clickable="true"
+          android:contentDescription="@string/enroll_edit_hint"
+          android:onClick="showEnroll" 
+          android:src="@drawable/enroll_link" />
+     
+   </LinearLayout>
+
+   <TextView
+        android:id="@+id/statusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    
+</LinearLayout>

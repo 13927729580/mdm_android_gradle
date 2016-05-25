@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <PreferenceCategory
+           android:title="@string/deviceinfo_identification" >
+           
+         <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="DEV_UDID"
+                android:persistent="false"
+                android:title="@string/deviceinfo_udid"
+                android:summary="@string/deviceinfo_udidsummary"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+          <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="DEV_SERIALNUM"
+                android:persistent="false"
+                android:title="@string/deviceinfo_serialnum"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+        </PreferenceCategory>
+          
+        <PreferenceCategory
+         		android:title="@string/deviceinfo_status" >
+          
+         <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="LASTSYNC"
+                android:persistent="false"
+                android:title="@string/deviceinfo_lastsync"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+          <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="NEXTSYNC"
+                android:persistent="false"
+                android:title="@string/deviceinfo_nextsync"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+         <com.lightspeedsystems.mdm.util.ProgressBarPrefView
+                android:key="DEV_BATTERY"
+                android:persistent="false"
+                android:title="@string/deviceinfo_batterylevel"
+                android:widgetLayout="@layout/progressbarpref_widget" />
+        </PreferenceCategory>
+          
+        <PreferenceCategory
+         		android:title="@string/deviceinfo_oscategory" >
+          
+          <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="DEV_OSVER"
+                android:persistent="false"
+                android:title="@string/deviceinfo_osversion"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+          <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="DEV_OSBUILD"
+                android:persistent="false"
+                android:title="@string/deviceinfo_osbuild"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+           <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="DEV_OSBOOTLOADER"
+                android:persistent="false"
+                android:title="@string/deviceinfo_osbootloader"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+          <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="DEV_OSSDKVER"
+                android:persistent="false"
+                android:title="@string/deviceinfo_ossdkversion"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+        </PreferenceCategory>
+          
+        <PreferenceCategory
+         		android:title="@string/deviceinfo_deviceproduct" >
+          
+          <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="DEV_MODEL"
+                android:persistent="false"
+                android:title="@string/deviceinfo_model"
+                android:widgetLayout="@layout/textvaluepref_widget" />            
+           <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="DEV_BRAND"
+                android:persistent="false"
+                android:title="@string/deviceinfo_brand"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+          <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="DEV_MFGR"
+                android:persistent="false"
+                android:title="@string/deviceinfo_manufacturer"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+          <!--  
+          <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="DEV_DEVICENAME"
+                android:persistent="false"
+                android:title="@string/deviceinfo_devname"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+          <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="DEV_DISPLAY"
+                android:persistent="false"
+                android:title="@string/deviceinfo_display"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+          <com.lightspeedsystems.mdm.util.StaticTextPrefView
+                android:key="DEV_PRODUCT"
+                android:persistent="false"
+                android:title="@string/deviceinfo_product"
+                android:widgetLayout="@layout/textvaluepref_widget" />
+          -->          
+       </PreferenceCategory>
+       
+</PreferenceScreen>
+ 

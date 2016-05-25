@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimension_4"
+        android:text="@string/deviceinfo_title"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <!-- 
+    
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deviceinfo_title"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="?android:attr/actionBarSize" />
+    
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"  >
+    </ListView>
+ 	 -->
+    
+	<fragment 
+    	class="com.lightspeedsystems.mdm.DeviceInfoFragment"
+   		android:id="@+id/deviceView"
+     	android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
