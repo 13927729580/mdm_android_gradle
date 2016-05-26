@@ -1,6 +1,0 @@
- <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
- <properties>
-    <entry key="UPDATECFG_VERSION">01.01.2008a</entry>
-    <entry key="MDMAUTH_SERVER_URL">https://api.mybigcampus.com</entry>
-    <entry key="DEFAULT_MDMAUTH_MBCTOKEN">7f37894f336f494dabcfe5d4766b6321</entry>
- </properties>
