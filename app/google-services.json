@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "904579169767",
+    "firebase_url": "https://mobile-device-manager.firebaseio.com",
+    "project_id": "mobile-device-manager",
+    "storage_bucket": "mobile-device-manager.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904579169767:android:e7c8628990a2103e",
+        "android_client_info": {
+          "package_name": "com.lightspeedsystems.mdm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904579169767-q0uql3atjutadm7r8e5v4m9bqkrl7b2q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYO_p0wgjqnnqsf_9QKIckRpyd7Ow7jmg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

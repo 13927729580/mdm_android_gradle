@@ -2,8 +2,9 @@ package com.lightspeedsystems.mdm;
 
 import org.json.JSONObject;
 import android.content.Context;
+import android.content.pm.PackageManager;
 
-import com.google.android.gcm.GCMRegistrar;
+//import com.google.android.gcm.GCMRegistrar;
 import com.lightspeedsystems.mdm.util.LSLogger;
 
 /**
@@ -78,11 +79,11 @@ public class Prerequisites {
 		int rc=0;
 		// Make sure the device has the proper dependencies and things are set up for GCM:
 		try {
-			GCMRegistrar.checkDevice(context);    // throws UnsupportedOperationException
-        	GCMRegistrar.checkManifest(context);  // throws IllegalStateException
+	//		GCMRegistrar.checkDevice(context);    // throws UnsupportedOperationException
+    //    	GCMRegistrar.checkManifest(context);  // throws IllegalStateException
         	// now check for proper permissions. This is needed for handling special cases, mainly in Kindle:
     		// - uses-permission:'com.google.android.c2dm.permission.RECEIVE'
-    		if (context.checkCallingOrSelfPermission("com.google.android.c2dm.permission.RECEIVE") != 0) {
+    		if (context.checkCallingOrSelfPermission("com.google.android.c2dm.permission.RECEIVE") == PackageManager.PERMISSION_DENIED) {
     			rc=Constants.GCM_ERROR_permissions;
     			LSLogger.debug(TAG, "Permission for c2dm Receive is denied.");
     		}

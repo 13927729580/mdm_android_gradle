@@ -25,7 +25,7 @@ public class CommandProcessor {
 		// check for message key:
 		//String msg = gcmIntent.getStringExtra("msg");
 		// check for command key:
-		String data = gcmIntent.getStringExtra(GCMIntentService.EXTRA_MSGDATA);
+		String data = gcmIntent.getStringExtra(MdmFirebaseMessagingService.EXTRA_MSGDATA);
 		if (data == null)
 			data = gcmIntent.getStringExtra(Constants.CMD_datatag);
 		

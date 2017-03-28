@@ -118,18 +118,6 @@
         <activity android:name=".DiagnosticsList"  /> <!--  android:theme="@style/FullscreenTheme"/>  -->
         <activity android:name=".LoggingInfoView"  /> <!-- android:theme="@style/FullscreenTheme"/> -->
 
-		<receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" 
-	 	         android:permission="com.google.android.c2dm.permission.SEND" >
-     	 	<intent-filter>
-        		<action android:name="com.google.android.c2dm.intent.RECEIVE" />
-        		<category android:name="com.lightspeedsystems.mdm" />
-     	 	</intent-filter>
-    	 	<intent-filter>
-        		<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-        		<category android:name="com.lightspeedsystems.mdm" />
-     	 	</intent-filter>
-     	</receiver>
-				
 		<receiver android:name=".DeviceAdminProvider$DeviceAdminProviderReceiver"
         	android:label="@string/device_admin_activate_title"
         	android:description="@string/device_admin_activate_description"
@@ -160,9 +148,17 @@
 		</receiver>
 -->
 	
-		<!-- services: -->
-		<service android:name=".GCMIntentService"    />
-		
+		<service android:name=".MdmFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />;
+            </intent-filter>
+        </service>
+        <service android:name=".MdmFirebaseInstanceIdService" android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />;
+            </intent-filter>
+        </service>
+
 		<!--  Accounts authenticator service, for email/exchange support; not implemented in current version.
 		<service android:name=".AccountAuthenticatorService"
  			android:exported="true" 

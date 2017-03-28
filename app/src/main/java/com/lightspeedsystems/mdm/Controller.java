@@ -3,7 +3,8 @@ package com.lightspeedsystems.mdm;
 import java.io.File;
 import java.util.Vector;
 
-import com.google.android.gcm.GCMRegistrar;
+//import com.google.android.gcm.GCMRegistrar;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.lightspeedsystems.mdm.util.LSLogger;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -340,7 +341,7 @@ public class Controller extends Thread { //implements ServiceConnection {
 	private void initializeGcmReceivers() {
 		if (!bGcmControllerRegistered) {
 	        context.registerReceiver(mHandleGcmMessageReceiver,
-	                new IntentFilter(GCMIntentService.GCM_NOTIFICATION_MESSAGE)); 
+	                new IntentFilter(MdmFirebaseMessagingService.GCM_NOTIFICATION_MESSAGE));
 	        bGcmControllerRegistered = true;
 	        LSLogger.debug(TAG, "Initialized GCM receivers.");
 		}
@@ -992,20 +993,10 @@ private boolean bgcmSeriviceBound;
 	private void registerGcm() {
 		// Read existing GCM ID from local GCM storage if we have it; otherwise, request it:
 		try {
-	        String regId = GCMRegistrar.getRegistrationId(context);
-	        if (regId.equals("")) {
-	        	LSLogger.info(TAG, "--no GCM id found; registering with GCM service...");
-	            // Initialize GCM registration: 
-	        	registerGCMinprogress = true;
-               GCMRegistrar.register(context, Constants.GCM_SENDER_ID);
-                LSLogger.debug(TAG, "RegisterGCM attempt completed.");
-	        	 
-	        } else {  // we have a registration ID, so use it
-	        	LSLogger.info(TAG, "GCM ID found in GCM preferences: " + regId);
+	        String regId = FirebaseInstanceId.getInstance().getToken();
 	            bGcmRegistered = true;
 	        	setGcmIDRegistered(regId);
-	        }
-        	
+
 		} catch (Exception ex) {
 			LSLogger.exception(TAG, "RegisterGCm error:", ex);
 			registerGCMinprogress = false;
@@ -1068,10 +1059,10 @@ private boolean bgcmSeriviceBound;
 	 * decide if a re-register is  needed.
 	 */
 	public void checkReRegisterGcm(boolean bforce) {
-		if (bforce || !GCMRegistrar.isRegisteredOnServer(context)) {
+		if (bforce ) {
 			try {
 				setGcmIDUnregistered(null);
-				GCMRegistrar.unregister(context);
+
 		        bGcmRegistered = false;
 
 	        	// now, simply re-register:
@@ -1086,8 +1077,7 @@ private boolean bgcmSeriviceBound;
 	private void unregisterGcm(boolean bforce) {
 			try {
 				setGcmIDUnregistered(null);
-				if (bGcmRegistered || bforce)
-					GCMRegistrar.unregister(context);
+
 		        bGcmRegistered = false;  // may already have been set to false, but do it anyway
 		        LSLogger.debug(TAG, "Unregistered GCM.");
 			} catch (Exception ex) {
@@ -1103,11 +1093,11 @@ private boolean bgcmSeriviceBound;
         new BroadcastReceiver() {
          @Override
          public void onReceive(Context context, Intent intent) {
-        	String msgAction = intent.getExtras().getString(GCMIntentService.EXTRA_MSGTYPE);
-        	String msgData = intent.getExtras().getString(GCMIntentService.EXTRA_MSGDATA); 
+        	String msgAction = intent.getExtras().getString(MdmFirebaseMessagingService.EXTRA_MSGTYPE);
+        	String msgData = intent.getExtras().getString(MdmFirebaseMessagingService.EXTRA_MSGDATA);
         	int msgCode = -1;
 			try {  // extract the message code string value if present.
-				String msgCodeStr = intent.getExtras().getString(GCMIntentService.EXTRA_MSGCODE);
+				String msgCodeStr = intent.getExtras().getString(MdmFirebaseMessagingService.EXTRA_MSGCODE);
 				if (msgCodeStr != null)
 					msgCode = Integer.valueOf(msgCodeStr);
 			} catch (NumberFormatException nfex) { 
@@ -1116,29 +1106,29 @@ private boolean bgcmSeriviceBound;
 
             if (msgAction!=null) {
                 //LSLogger.info(TAG, "!!GCM-Broadcast Message received: " + msgAction);
-            	if (msgAction.equalsIgnoreCase(GCMIntentService.ACTION_MESSAGE)) {
+            	if (msgAction.equalsIgnoreCase(MdmFirebaseMessagingService.ACTION_MESSAGE)) {
             		// .. process the message or action received:
                     LSLogger.info(TAG, "Received GCM Message for CommandProcessing: data="+(msgData==null?"(null)":msgData));
                     CommandProcessor.handleGcmCommand(intent);
             		
-            	} else if (msgAction.equalsIgnoreCase(GCMIntentService.ACTION_DISPLAYMSG)) {
+            	} else if (msgAction.equalsIgnoreCase(MdmFirebaseMessagingService.ACTION_DISPLAYMSG)) {
                     LSLogger.info(TAG, "Received GCM Message for Display:"+(msgData==null?"(null)":msgData));
                     if (msgDisplayCallback != null && msgData != null)
             			msgDisplayCallback.statusMsg(msgData);
                     
-            	} else if (msgAction.equalsIgnoreCase(GCMIntentService.ACTION_REGISTERED)) {
+            	} else if (msgAction.equalsIgnoreCase(MdmFirebaseMessagingService.ACTION_REGISTERED)) {
                     LSLogger.info(TAG, "Received GCM Message for Registration:"+(msgData==null?"(null)":msgData));
             		setGcmIDRegistered(msgData);
             		
-            	} else if (msgAction.equalsIgnoreCase(GCMIntentService.ACTION_UNREGISTERED)) {
+            	} else if (msgAction.equalsIgnoreCase(MdmFirebaseMessagingService.ACTION_UNREGISTERED)) {
                     LSLogger.info(TAG, "Received GCM Message for Unregistration:"+(msgData==null?"(null)":msgData));
             		setGcmIDUnregistered(msgData);
             		
-            	} else if (msgAction.equalsIgnoreCase(GCMIntentService.ACTION_ERROR)) {
+            	} else if (msgAction.equalsIgnoreCase(MdmFirebaseMessagingService.ACTION_ERROR)) {
                     LSLogger.error(TAG, "Received GCM Message with ERROR ("+msgCode+"): "
                     				+(msgData==null?"(null)":msgData));
                     handleGcmErrorMsg(msgCode);
-            	} else if (msgAction.equalsIgnoreCase(GCMIntentService.ACTION_RECOVERABLEERROR)) {
+            	} else if (msgAction.equalsIgnoreCase(MdmFirebaseMessagingService.ACTION_RECOVERABLEERROR)) {
                     LSLogger.error(TAG, "Received GCM Message with RECOVERABLE ERROR ("+msgCode+"): "
                     				+(msgData==null?"(null)":msgData));
                     handleGcmErrorMsg(msgCode);
