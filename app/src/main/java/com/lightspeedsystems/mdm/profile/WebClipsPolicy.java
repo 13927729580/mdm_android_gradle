@@ -109,6 +109,9 @@ public class WebClipsPolicy extends ProfileItem  {
                 if(webClip.length()>0){
 
                     String urlStr = webClip.getString("url");
+                    if(urlStr.indexOf("://") == -1){
+                        urlStr="http://"+urlStr;
+                    }
                     Intent shortcutIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlStr));
                     // shortcutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
