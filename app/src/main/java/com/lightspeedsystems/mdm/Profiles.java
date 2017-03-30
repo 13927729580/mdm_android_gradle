@@ -531,10 +531,12 @@ public class Profiles {
 	                    		cursor.getLong(COLUMN_DATETIME_INDEX),
 	                    		cursor.getString(COLUMN_NAME_INDEX),
 	                    		cursor.getString(COLUMN_PROFILE_INDEX));
-	                    		 
-	                    list.add(item);
-	                    result++;
-	                } while (cursor.moveToNext());
+
+						if(item != null) {
+							list.add(item);
+							result++;
+						}
+					} while (cursor.moveToNext());
 	    		}
 	    	} catch (Exception ex) {
 	    		LSLogger.exception(TAG, "Error Reading DB", ex, false);

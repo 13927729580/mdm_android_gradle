@@ -125,7 +125,8 @@ public abstract class ProfileItem {
 		}
 		
 		public void setContext(Context context) { this.context = context; }
-		
+		public Context getContext() { return this.context; }
+
 		public int getDbID() { return dbID; }
 		public void setDbID(int id) { dbID=id; }
 		public int getType() { return prftype; }
@@ -326,6 +327,21 @@ public abstract class ProfileItem {
 					  }
 				  }
 
+				  // Process app_launcher policy settings:
+				  if (jsonData.has(PrfConstants.PAYLOADTYPE_AppLauncher))  {
+					  try {
+
+						  JSONObject profileItem = jsonData.getJSONObject(PrfConstants.PAYLOADTYPE_AppLauncher);
+						  LSLogger.debug(TAG, "GetProfileItemsFromCommand app launcher: " + "profile set to "+ profileItem.toString());
+						  if (profileItem != null && profileItem.length()>0) {
+							  AppLauncherPolicy pp = new AppLauncherPolicy(context, profileItem);
+							  list.add(pp);
+						  }
+					  } catch (Exception ex2) {
+						  LSLogger.exception(TAG, "GetProfileItemsFromCommand AppLauncherPolicy exception:", ex2);
+						  cmdResult.setException(ex2);
+					  }
+				  }
 
 				  // Process wifi policy settings:
 				// We expect to receive an array of wifi profiles, such as:

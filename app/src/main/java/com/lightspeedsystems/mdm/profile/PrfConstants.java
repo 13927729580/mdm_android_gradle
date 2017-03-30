@@ -13,6 +13,7 @@ public class PrfConstants {
 	public final static String PAYLOADTYPE_Cal_dav        = "cal_dav";
 	public final static String PAYLOADTYPE_Calendar       = "calendar_subscription";
 	public final static String PAYLOADTYPE_WebClips       = "web_clips";
+	public final static String PAYLOADTYPE_AppLauncher    = "android_app_launcher";
 
 	// profile types as integers:
 	public final static int PROFILETYPE_restrictions = 1;
@@ -24,6 +25,7 @@ public class PrfConstants {
 	public final static int PROFILETYPE_cal_dav = 7;
 	public final static int PROFILETYPE_calendar = 8;
 	public final static int PROFILETYPE_webclips = 9;
+	public final static int PROFILETYPE_applauncher = 10;
 
 	
 	// payload key name tags (label names used to identify common/static sections in a profile):

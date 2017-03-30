@@ -499,6 +499,11 @@ public class Apps {
 			// create the complete name of the file for the local file name:
 			File path = Utils.getPreferredDownloadDir();
 			if (path == null || !path.exists() || !path.canWrite()) {
+				LSLogger.debug(TAG, "-preferred download path is "+path.toString());
+				if (path != null){
+					LSLogger.debug(TAG, "-path exists="+path.exists());
+					LSLogger.debug(TAG, "-path can write="+path.canWrite());
+				}
 				LSLogger.debug(TAG, "-using alternate download path.");
 				path = Utils.getAlternateDownloadDir();
 			}
