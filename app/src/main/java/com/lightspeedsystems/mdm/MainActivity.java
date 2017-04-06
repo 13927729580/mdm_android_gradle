@@ -3,12 +3,17 @@ package com.lightspeedsystems.mdm;
 import com.lightspeedsystems.mdm.util.DataChangeListener;
 import com.lightspeedsystems.mdm.util.LSLogger;
 
+import android.*;
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.os.Process;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.content.Context;
 import android.content.Intent;
@@ -82,8 +87,25 @@ public class MainActivity extends Activity implements ProgressCallbackInterface,
         	controller.getDeviceAdmin().activateAdmin(this);
         	LSLogger.debug(TAG, "Requested to activate admin.");
         }
-        
+		checkWritePermissions();
+
     }
+
+	void checkWritePermissions(){
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+			int permission = ContextCompat.checkSelfPermission(this,android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+			if (permission != PackageManager.PERMISSION_GRANTED){
+/*
+				if(ActivityCompat.shouldShowRequestPermissionRationale(this,android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+				}
+*/
+				ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},122);
+
+			}
+		}
+	}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

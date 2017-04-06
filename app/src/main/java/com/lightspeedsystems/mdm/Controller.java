@@ -1095,6 +1095,7 @@ private boolean bgcmSeriviceBound;
          public void onReceive(Context context, Intent intent) {
         	String msgAction = intent.getExtras().getString(MdmFirebaseMessagingService.EXTRA_MSGTYPE);
         	String msgData = intent.getExtras().getString(MdmFirebaseMessagingService.EXTRA_MSGDATA);
+			 LSLogger.info(TAG, "seeing GCM Message for data="+(msgData==null?"(null)":msgData) + " action="+(msgAction==null?"(null)":msgAction));
         	int msgCode = -1;
 			try {  // extract the message code string value if present.
 				String msgCodeStr = intent.getExtras().getString(MdmFirebaseMessagingService.EXTRA_MSGCODE);
