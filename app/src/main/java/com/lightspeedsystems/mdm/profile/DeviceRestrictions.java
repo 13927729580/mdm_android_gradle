@@ -61,7 +61,7 @@ public class DeviceRestrictions extends ProfileItem {
 					if (prev != b.booleanValue())
 						Profiles.logProfileChange(timeApplied, displayName, PrfConstants.PAYLOADVALUE_rs_cameraEnable, b.toString(), Boolean.toString(prev));
 				}
-				
+
 				//enable/disable storage encryption:
 				if (jsondata.has(PrfConstants.PAYLOADVALUE_rs_encryptionEnable)) {
 					Boolean b = jsondata.getBoolean(PrfConstants.PAYLOADVALUE_rs_encryptionEnable);
@@ -69,7 +69,28 @@ public class DeviceRestrictions extends ProfileItem {
 					if (prev != b.booleanValue())
 						Profiles.logProfileChange(timeApplied, displayName, PrfConstants.PAYLOADVALUE_rs_encryptionEnable, b.toString(), Boolean.toString(prev));
 				}
-				
+
+				//enable/disable location reporting:
+				if (jsondata.has(PrfConstants.PAYLOADVALUE_rs_androidlocationenable)) {
+					Boolean b = jsondata.getBoolean(PrfConstants.PAYLOADVALUE_rs_androidlocationenable);
+					int dist = 0;
+					int time = 5;
+					if (jsondata.has(PrfConstants.PAYLOADVALUE_rs_androidlocationdistance))
+						dist = jsondata.getInt(PrfConstants.PAYLOADVALUE_rs_androidlocationdistance);
+					if (jsondata.has(PrfConstants.PAYLOADVALUE_rs_androidlocationtime))
+						time = jsondata.getInt(PrfConstants.PAYLOADVALUE_rs_androidlocationtime);
+
+					boolean prev = Controller.getInstance(getContext()).getLocationReportEnable();
+					if (prev != b.booleanValue())
+						Profiles.logProfileChange(timeApplied, displayName, PrfConstants.PAYLOADVALUE_rs_androidlocationenable, b.toString(), Boolean.toString(prev));
+					if( dist != Controller.getInstance(getContext()).getLocationDistance())
+						Profiles.logProfileChange(timeApplied, displayName, PrfConstants.PAYLOADVALUE_rs_androidlocationdistance, Integer.toString(dist), Integer.toString(Controller.getInstance(getContext()).getLocationDistance()));
+					if( time != Controller.getInstance(getContext()).getLocationTime())
+						Profiles.logProfileChange(timeApplied, displayName, PrfConstants.PAYLOADVALUE_rs_androidlocationtime, Integer.toString(time), Integer.toString(Controller.getInstance(getContext()).getLocationTime()));
+
+					Controller.getInstance(getContext()).enableLocationReports(b,time,dist);
+				}
+
 			} catch (Exception ex) {
 				cmdResult.setException(ex);
 				bOk = false;

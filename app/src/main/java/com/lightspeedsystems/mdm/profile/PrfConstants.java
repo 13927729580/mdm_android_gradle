@@ -58,6 +58,9 @@ public class PrfConstants {
 	
 	public final static String PAYLOADVALUE_rs_cameraEnable 	= "allow_camera";
 	public final static String PAYLOADVALUE_rs_encryptionEnable= "force_encrypted_storage";
+	public final static String PAYLOADVALUE_rs_androidlocationenable= "allow_android_location";
+	public final static String PAYLOADVALUE_rs_androidlocationtime= "android_location_time";
+	public final static String PAYLOADVALUE_rs_androidlocationdistance= "android_location_distance";
 
 	public final static String PAYLOADVALUE_wf_ssid      		= "ssid_str";
 	public final static String PAYLOADVALUE_wf_hidden			= "hidden_network";

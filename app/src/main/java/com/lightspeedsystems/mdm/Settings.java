@@ -100,7 +100,11 @@ public class Settings {
 	public final static String SVRSENDCMDRESULTSOSERVER = "SVR_SENDCMDRESULTS";
 	
 	public final static String LOGLEVEL			  = "LOGLEVEL";
-	
+
+	public final static String LOCATION_ENABLE = "LOCATION_ENABLE";
+	public final static String LOCATION_TIME = "LOCATION_TIME";
+	public final static String LOCATION_DISTANCE = "LOCATION_DISTANCE";
+
 	// name of the file used to store the settings data.
 	//private static final String PREFERENCES_DATASTORE = "settings";
 	  
@@ -301,7 +305,31 @@ public class Settings {
 		}
 		return syncval;
 	}
-	
+
+	public boolean isLastLocationEnable() {
+		return getSettingBoolean(LOCATION_ENABLE, false);
+	}
+
+	public int getLastLocationTime() {
+		return getSettingInt(LOCATION_TIME,10);
+	}
+
+	public int getLastLocationDistance() {
+		return getSettingInt(LOCATION_DISTANCE,0);
+	}
+
+	public void setLastLocationEnable(boolean enable) {
+		setSetting(LOCATION_ENABLE,String.valueOf(enable));
+	}
+
+	public void setLastLocationTime(int time) {
+		setSetting(LOCATION_TIME,time);
+	}
+
+	public void setLastLocationDistance(int distance) {
+		setSetting(LOCATION_DISTANCE,distance);
+	}
+
 	/**
 	 * Returns true if the system is to post command processing results to a server,
 	 * false if not. Uses the SVRSENDCMDRESULTSOSERVER setting value.

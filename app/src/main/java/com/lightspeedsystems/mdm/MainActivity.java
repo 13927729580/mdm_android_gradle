@@ -4,9 +4,13 @@ import com.lightspeedsystems.mdm.util.DataChangeListener;
 import com.lightspeedsystems.mdm.util.LSLogger;
 
 import android.*;
+import android.Manifest;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +27,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Main UI for the MDM app.
@@ -101,7 +106,7 @@ public class MainActivity extends Activity implements ProgressCallbackInterface,
 
 				}
 */
-				ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},122);
+				ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},122);
 
 			}
 		}
@@ -481,7 +486,7 @@ public class MainActivity extends Activity implements ProgressCallbackInterface,
 	/**
 	 * DataChangeListener callback for notifying when a data change event has occurred.
 	 * @param identifier optional string for identifying the data.
-	 * @param newUrlValue new value. 
+	 * @param newValue new value.
 	 */
 	public void dataChanged(String identifier, String newValue) {
 		if (identifier != null) {
@@ -498,7 +503,7 @@ public class MainActivity extends Activity implements ProgressCallbackInterface,
 	/**
 	 * ErrorCallbackInterface implementation:
 	 * Handles a error callback with a string error message or a resource id to retrieve as the message.
-	 * @param errorTye - an Constants.ERROR_TYPE constant value
+	 * @param errorType - an Constants.ERROR_TYPE constant value
 	 * @param errorMessage - error message, or null.
 	 * @param errorTitle - string to show as a message title, or null if not needed.
 	 */
@@ -692,7 +697,6 @@ public class MainActivity extends Activity implements ProgressCallbackInterface,
     		 onErrorCallback(Constants.ERRORTYPE_FATAL, title, msg);
     	 }
      }
-    
 }
     
 
