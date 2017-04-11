@@ -2397,6 +2397,9 @@ public class Controller extends Thread { //implements ServiceConnection {
 		enableLocation = enableLoc;
 		settings.setLastLocationEnable(enableLocation);
 		locationTime = timeLoc;
+		if(locationTime <= 1) {
+			locationTime = 1;
+		}
 		settings.setLastLocationTime(locationTime);
 		locationDistance = distLoc;
 		settings.setLastLocationDistance(locationDistance);
@@ -2406,7 +2409,7 @@ public class Controller extends Thread { //implements ServiceConnection {
 			}
 			if (ActivityCompat.checkSelfPermission(context.getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 				if (ActivityCompat.checkSelfPermission(context.getApplicationContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-					locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, timeLoc * 1000, distLoc, locationListener, Looper.getMainLooper());
+					locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, locationTime * 60 * 1000, locationDistance, locationListener, Looper.getMainLooper());
 //					locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, timeLoc * 1000, distLoc, locationListener, Looper.getMainLooper());
 
 //					locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10 * 1000, 0.0F, locationListener, Looper.getMainLooper());
