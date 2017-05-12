@@ -5,8 +5,6 @@ package com.lightspeedsystems.mdm;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
@@ -14,11 +12,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 
 import android.content.Context;
-import android.util.Log;
 import android.util.Pair;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -215,6 +214,7 @@ public class HttpCommResponse {
 
             if(urlConnection instanceof HttpsURLConnection) {
                 HttpsURLConnection httpsConnection = (HttpsURLConnection) urlConnection;
+				httpsConnection.setSSLSocketFactory(new TLSSocketFactory());
 //                httpsConnection.setInstanceFollowRedirects(true);
                 httpsConnection.setRequestMethod("GET");
                 httpsConnection.setReadTimeout(5 * 1000);
@@ -256,9 +256,13 @@ public class HttpCommResponse {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        } catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (KeyManagementException e) {
+			e.printStackTrace();
+		}
 
-        return inStream;
+		return inStream;
     }
 
     public InputStream postUrlConnection(String urlStr, List<Pair<String,String>> headers, String postData) {

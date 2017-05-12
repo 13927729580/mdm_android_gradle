@@ -335,7 +335,7 @@ public class Controller extends Thread { //implements ServiceConnection {
 			initInstallStatus();
 
 			// if we are restarting and gcm is already set up, let's start up receivers:
-			if (isGcmReady())
+//			if (isGcmReady())
 				initializeGcmReceivers();
 
 			/*
@@ -352,12 +352,12 @@ public class Controller extends Thread { //implements ServiceConnection {
 	}
 
 	private void initializeGcmReceivers() {
-		if (!bGcmControllerRegistered) {
+//		if (!bGcmControllerRegistered) {
 			context.registerReceiver(mHandleGcmMessageReceiver,
 					new IntentFilter(MdmFirebaseMessagingService.GCM_NOTIFICATION_MESSAGE));
 			bGcmControllerRegistered = true;
 			LSLogger.debug(TAG, "Initialized GCM receivers.");
-		}
+//		}
 	}
 
 	private void terminateGcmReceivers() {
@@ -452,7 +452,7 @@ public class Controller extends Thread { //implements ServiceConnection {
 			LSLogger.info(TAG, "Starting Controller...");
 
 			try {
-				if (isGcmReady())
+//				if (isGcmReady())
 					initializeGcmReceivers();
 
 				do {
@@ -2180,6 +2180,27 @@ public class Controller extends Thread { //implements ServiceConnection {
 					commandResult.setErrorMessage(app.getReason());
 				} else {
 					commandResult.setSuccess(true);
+					if (app.equalsPackageName("com.lightspeedsystems.lightspeedsecurelauncher")) {
+						String data = Settings.getInstance(context).getSetting("APP_LAUNCHER");
+
+						Intent launchIntent = getContext().getPackageManager().getLaunchIntentForPackage("com.lightspeedsystems.lightspeedsecurelauncher");
+						getContext().startActivity(launchIntent);
+
+
+						if (data != null) {
+
+							try {
+								Thread.sleep(500);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+							Intent appLauncherIntent = new Intent();
+							appLauncherIntent.setPackage("com.lightspeedsystems.lightspeedsecurelauncher");
+							appLauncherIntent.setAction("com.lightspeedsystems.lightspeedsecurelauncher.action.mdm");
+							appLauncherIntent.putExtra("EXTRA_APP_LAUNCH_DATA",data);
+							getContext().sendBroadcast(appLauncherIntent);
+						}
+					}
 				}
 				// for mdm-related apps, call this special post-processing code.
 				if (app.isMdmApp())

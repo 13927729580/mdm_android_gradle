@@ -11,6 +11,7 @@ import com.lightspeedsystems.mdm.DeviceAdminProvider;
 import com.lightspeedsystems.mdm.Settings;
 import com.lightspeedsystems.mdm.util.LSLogger;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -41,6 +42,24 @@ public class AppLauncherPolicy extends ProfileItem  {
         boolean bOk = true;
 
         profileSnapshot=null;
+        String appLauncherData = Settings.getInstance(context).getSetting("APP_LAUNCHER");
+        if(appLauncherData != null) {
+            try {
+                profileSnapshot = new JSONObject(appLauncherData);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        Intent launchIntent = getContext().getPackageManager().getLaunchIntentForPackage("com.lightspeedsystems.lightspeedsecurelauncher");
+        getContext().startActivity(launchIntent);
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         Intent appLauncherIntent = new Intent();
         appLauncherIntent.setPackage("com.lightspeedsystems.lightspeedsecurelauncher");
@@ -96,27 +115,6 @@ public class AppLauncherPolicy extends ProfileItem  {
             s = profileSnapshot.toString();
         }
         return s;
-    }
-
-
-    /**
-     * Creates a ProfileItem for the current restriction settings, as a profile.
-     * Includes camera and encryption settings.
-     */
-    private JSONObject createSnapshot(DeviceAdminProvider adminprovider) {
-        JSONObject jdata = null;
-        try {
-            DeviceAdminProvider admin = Controller.getInstance(context).getDeviceAdmin();
-            DevicePolicyManager dpm = admin.getDevicePolicyManager();
-            jdata = new JSONObject();
-            // camera:
-            jdata.put (PrfConstants.PAYLOADVALUE_rs_cameraEnable, !dpm.getCameraDisabled(null));
-            // storage encryption:
-            jdata.put(PrfConstants.PAYLOADVALUE_rs_encryptionEnable, dpm.getStorageEncryption(null));
-        } catch (Exception ex) {
-            LSLogger.exception(TAG, "CreateSnapshot error:", ex);
-        }
-        return jdata;
     }
 
 }

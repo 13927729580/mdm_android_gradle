@@ -6,7 +6,9 @@ import com.lightspeedsystems.mdm.util.LSLogger;
 import android.*;
 import android.Manifest;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.DialogFragment;
+import android.content.ComponentName;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -28,6 +30,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 /**
  * Main UI for the MDM app.
@@ -92,11 +96,11 @@ public class MainActivity extends Activity implements ProgressCallbackInterface,
         	controller.getDeviceAdmin().activateAdmin(this);
         	LSLogger.debug(TAG, "Requested to activate admin.");
         }
-		checkWritePermissions();
+		checkPermissions();
 
     }
 
-	void checkWritePermissions(){
+	void checkPermissions(){
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 			int permission = ContextCompat.checkSelfPermission(this,android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
@@ -109,6 +113,14 @@ public class MainActivity extends Activity implements ProgressCallbackInterface,
 				ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},122);
 
 			}
+			if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED ) {
+				ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS},0);
+			}
+			if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED ) {
+				ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE},0);
+			}
+
+
 		}
 	}
 

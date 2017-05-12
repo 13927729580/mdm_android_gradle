@@ -190,7 +190,7 @@ public class App {
 		if (appInfo != null) {
 			// use loadLabel to read's the app's name
 			appName = (String)appInfo.loadLabel(context.getPackageManager());
-			appIcon = appInfo.loadIcon(context.getPackageManager());
+//			appIcon = appInfo.loadIcon(context.getPackageManager());
 			appLogo = appInfo.loadLogo(context.getPackageManager());
 			versionName = packageInfo.versionName;
 			versionCode = packageInfo.versionCode;

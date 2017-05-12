@@ -224,25 +224,4 @@ public class WebClipsPolicy extends ProfileItem  {
         return s;
     }
 
-
-    /**
-     * Creates a ProfileItem for the current restriction settings, as a profile.
-     * Includes camera and encryption settings.
-     */
-    private JSONObject createSnapshot(DeviceAdminProvider adminprovider) {
-        JSONObject jdata = null;
-        try {
-            DeviceAdminProvider admin = Controller.getInstance(context).getDeviceAdmin();
-            DevicePolicyManager dpm = admin.getDevicePolicyManager();
-            jdata = new JSONObject();
-            // camera:
-            jdata.put (PrfConstants.PAYLOADVALUE_rs_cameraEnable, !dpm.getCameraDisabled(null));
-            // storage encryption:
-            jdata.put(PrfConstants.PAYLOADVALUE_rs_encryptionEnable, dpm.getStorageEncryption(null));
-        } catch (Exception ex) {
-            LSLogger.exception(TAG, "CreateSnapshot error:", ex);
-        }
-        return jdata;
-    }
-
 }

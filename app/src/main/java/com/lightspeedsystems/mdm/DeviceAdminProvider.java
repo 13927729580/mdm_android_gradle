@@ -16,6 +16,7 @@ import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
 /**
  * Wrapper class for DevicePolicyManager and other Device Aministration features and capabilities.
@@ -365,7 +366,7 @@ public class DeviceAdminProvider {
     public void wipeAll() {
     	devicePolicyMgr.wipeData(0);
     }
-    
+
     // ---------------------------
     // --- end of MDM actions ----
     // ---------------------------
@@ -382,7 +383,20 @@ public class DeviceAdminProvider {
 		public DeviceAdminProviderReceiver() {
 			super();
 		}
-		
+
+		@Override
+		public void onProfileProvisioningComplete(Context context, Intent intent) {
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+				DevicePolicyManager manager = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
+				ComponentName componentName = getComponentname(context);
+				manager.setProfileName(componentName,context.getString(R.string.device_admin_activate_title));
+			}
+		}
+
+		public static ComponentName getComponentname(Context context) {
+			return new ComponentName(context.getApplicationContext(),DeviceAdminProviderReceiver.class);
+		}
+
 	    @Override
 	    public CharSequence onDisableRequested(Context context, Intent intent) {
 	        return context.getString(R.string.device_admin_disable_warning);
