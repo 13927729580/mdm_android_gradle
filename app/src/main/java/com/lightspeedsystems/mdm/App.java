@@ -189,7 +189,7 @@ public class App {
 		} 
 		if (appInfo != null) {
 			// use loadLabel to read's the app's name
-			appName = (String)appInfo.loadLabel(context.getPackageManager());
+			appName = makeAllAscii(appInfo.loadLabel(context.getPackageManager()).toString());
 //			appIcon = appInfo.loadIcon(context.getPackageManager());
 			appLogo = appInfo.loadLogo(context.getPackageManager());
 			versionName = packageInfo.versionName;
@@ -199,6 +199,17 @@ public class App {
 			definitionDirty = true;
 		}
 		return appInfo;		
+	}
+
+	private String makeAllAscii(String input) {
+		String strAllAscii = "";
+		for (int i=0;i < input.length(); i++) {
+			int c = input.charAt(i);
+			if (c >= 0x20 && c < 0x7F) {
+				strAllAscii += input.charAt(i);
+			}
+		}
+		return strAllAscii;
 	}
 	
 	/**

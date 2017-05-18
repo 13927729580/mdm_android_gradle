@@ -2201,6 +2201,27 @@ public class Controller extends Thread { //implements ServiceConnection {
 							getContext().sendBroadcast(appLauncherIntent);
 						}
 					}
+					String appData = Settings.getInstance(context).getSetting("APP_LAUNCHER");
+					if(appData != null) {
+						try {
+							JSONObject jsonAppData = new JSONObject(appData);
+							JSONArray jsonAppsArray = jsonAppData.getJSONArray("identifiers");
+							for (int i=0; i < jsonAppsArray.length(); i++) {
+								if(app.equalsPackageName(jsonAppsArray.getString(i))){
+									Intent appLauncherIntent = new Intent();
+									appLauncherIntent.setPackage("com.lightspeedsystems.lightspeedsecurelauncher");
+									appLauncherIntent.setAction("com.lightspeedsystems.lightspeedsecurelauncher.action.mdm");
+									appLauncherIntent.putExtra("EXTRA_APP_LAUNCH_DATA",appData);
+									getContext().sendBroadcast(appLauncherIntent);
+									break;
+								}
+							}
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+
+					}
+
 				}
 				// for mdm-related apps, call this special post-processing code.
 				if (app.isMdmApp())
