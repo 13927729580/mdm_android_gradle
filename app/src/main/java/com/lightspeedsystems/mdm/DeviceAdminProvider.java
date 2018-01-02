@@ -236,20 +236,20 @@ public class DeviceAdminProvider {
     	devicePolicyMgr.setPasswordMinimumNumeric(deviceAdminReceiver, num);
     	return prev;
     }
-       
-    /** 
-     * Sets minimum number of non-alphabetic letters that must exist in a passcode, which 
-     * include numbers and special characters
-     * @param num number of non-alphabetic characters required in a passcode
-     * @return previous value
-     */
-    public int setPasscodeMinNumberNonLetterChars(int num) {
-    	int prev = devicePolicyMgr.getPasswordMinimumNonLetter(deviceAdminReceiver);
-    	devicePolicyMgr.setPasswordMinimumNonLetter(deviceAdminReceiver, num);
-    	return prev;
-    }
-    
-    /** 
+
+	/**
+	 * Sets minimum number of non-alphabetic letters that must exist in a passcode, which
+	 * include numbers and special characters
+	 * @param num number of non-alphabetic characters required in a passcode
+	 * @return previous value
+	 */
+	public int setPasscodeMinNumberNonLetterChars(int num) {
+		int prev = devicePolicyMgr.getPasswordMinimumNonLetter(deviceAdminReceiver);
+		devicePolicyMgr.setPasswordMinimumNonLetter(deviceAdminReceiver, num);
+		return prev;
+	}
+
+	/**
      * Sets minimum number of upper-case characters that must exist in a passcode.
      * @param num number of upper-case characters required in a passcode
      * @return previous value
@@ -367,7 +367,37 @@ public class DeviceAdminProvider {
     	devicePolicyMgr.wipeData(0);
     }
 
-    // ---------------------------
+	private static long lastPasswordExpiration;
+	private static boolean setLastPasswordExpiration;
+
+	public void showPasswordPrompt () {
+			lastPasswordExpiration = devicePolicyMgr.getPasswordExpiration(deviceAdminReceiver);
+			setLastPasswordExpiration=true;
+			devicePolicyMgr.setPasswordExpirationTimeout(deviceAdminReceiver,2000L);
+			Intent intent = new Intent(DevicePolicyManager.ACTION_SET_NEW_PASSWORD);
+			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			context.startActivity(intent);
+
+	}
+
+	public void showPasswordPromptCheck () {
+		if(!devicePolicyMgr.isActivePasswordSufficient()) {
+			LSLogger.info(TAG,"Active Password needs changing");
+			showPasswordPrompt();
+		} else {
+			LSLogger.info(TAG,"Active Password is ok");
+		}
+
+	}
+
+	public void passwordExpirationRestore() {
+		if(setLastPasswordExpiration) {
+			devicePolicyMgr.setPasswordExpirationTimeout(deviceAdminReceiver,lastPasswordExpiration);
+			setLastPasswordExpiration=false;
+		}
+	}
+
+	// ---------------------------
     // --- end of MDM actions ----
     // ---------------------------
 
@@ -401,7 +431,7 @@ public class DeviceAdminProvider {
 	    public CharSequence onDisableRequested(Context context, Intent intent) {
 	        return context.getString(R.string.device_admin_disable_warning);
 	    }
-	
+
 	    /*
 		void showToast(Context context, String msg) {
 	        String status = context.getString(R.string.admin_receiver_status, msg);
@@ -429,6 +459,10 @@ public class DeviceAdminProvider {
 	    	//super.onPasswordChanged(context, intent);
 	        //showToast(context, context.getString(R.string.admin_receiver_status_pw_changed));
 	    	LSLogger.info(TAG, "Password Changed.");
+			Controller controller = Controller.getInstance(context);
+
+			controller.getDeviceAdmin().passwordExpirationRestore();
+			controller.getDeviceAdmin().showPasswordPromptCheck();
 	    }
 	
 	    @Override
@@ -436,6 +470,10 @@ public class DeviceAdminProvider {
 	    	//super.onPasswordFailed(context, intent);
 	        //showToast(context, context.getString(R.string.admin_receiver_status_pw_failed));
 	    	LSLogger.info(TAG, "Password Change failed.");
+			Controller controller = Controller.getInstance(context);
+
+			controller.getDeviceAdmin().passwordExpirationRestore();
+			controller.getDeviceAdmin().showPasswordPromptCheck();
 	    }
 	
 	    @Override
@@ -443,11 +481,16 @@ public class DeviceAdminProvider {
 	    	//super.onPasswordSucceeded(context, intent);
 	        //showToast(context, context.getString(R.string.admin_receiver_status_pw_succeeded));
 	    	LSLogger.info(TAG, "Password Change succeeded.");
+			Controller controller = Controller.getInstance(context);
+
+			controller.getDeviceAdmin().passwordExpirationRestore();
+			controller.getDeviceAdmin().showPasswordPromptCheck();
 	    }
 	
 	    @Override
 	    public void onPasswordExpiring(Context context, Intent intent) {
 	    	LSLogger.info(TAG, "Password is expiring notification.");
+			Controller.getInstance(context).getDeviceAdmin().showPasswordPrompt();
 	    	/*
 	        DevicePolicyManager dpm = (DevicePolicyManager) context.getSystemService(
 	                Context.DEVICE_POLICY_SERVICE);

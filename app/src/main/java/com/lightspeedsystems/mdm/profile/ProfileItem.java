@@ -304,7 +304,7 @@ public abstract class ProfileItem {
 				  if (jsonData.has(PrfConstants.PAYLOADTYPE_PasscodePolicy))  {
 					  try {
 						  JSONObject profileItem = new JSONObject(jsonData.getString(PrfConstants.PAYLOADTYPE_PasscodePolicy));
-						  if (profileItem != null && profileItem.length()>0) {
+						  if (profileItem != null) {
 							  PasscodePolicy pp = new PasscodePolicy(context, profileItem);
 							  list.add(pp);
 						  }

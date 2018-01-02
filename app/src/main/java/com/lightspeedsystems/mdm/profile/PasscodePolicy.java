@@ -6,6 +6,8 @@ import org.json.JSONObject;
 
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
+import android.content.Intent;
+
 import com.lightspeedsystems.mdm.CommandResult;
 import com.lightspeedsystems.mdm.Constants;
 import com.lightspeedsystems.mdm.Controller;
@@ -180,8 +182,50 @@ public class PasscodePolicy extends ProfileItem {
 						Profiles.logProfileChange(timeApplied, displayName, PrfConstants.PAYLOADVALUE_pw_passcodequality, 
 							newValue, prevValue);
 					}
+				} else {
+					int qualityLevel = passcodeQualityIntFromStr("none");
+					int prevLevel    = admin.setPasscodeQuality(qualityLevel);
+					if (qualityLevel != prevLevel) {
+						String prevValue = passcodeQualityStrFromInt(prevLevel);
+						Profiles.logProfileChange(timeApplied, displayName, PrfConstants.PAYLOADVALUE_pw_passcodequality,
+								"none", prevValue);
+					}
+
+					int newValue = 0;
+					int prevValue = admin.setPasscodeMinLength(newValue);
+					if (newValue != prevValue)
+						Profiles.logProfileChange(timeApplied, displayName, PrfConstants.PAYLOADVALUE_pw_minlength,
+								Integer.toString(newValue), Integer.toString(prevValue));
+
+					prevValue = admin.setPasscodeNumberOfLetters(newValue);
+					if (newValue != prevValue)
+						Profiles.logProfileChange(timeApplied, displayName, PrfConstants.PAYLOADVALUE_pw_minnumletters,
+								Integer.toString(newValue), Integer.toString(prevValue));
+					prevValue = admin.setPasscodeMinNumberLowercaseChars(newValue);
+					if (newValue != prevValue)
+						Profiles.logProfileChange(timeApplied, displayName, PrfConstants.PAYLOADVALUE_pw_minlowercasechars,
+								Integer.toString(newValue), Integer.toString(prevValue));
+					prevValue = admin.setPasscodeMinNumberUppercaseChars(newValue);
+					if (newValue != prevValue)
+						Profiles.logProfileChange(timeApplied, displayName, PrfConstants.PAYLOADVALUE_pw_minuppercasechars,
+								Integer.toString(newValue), Integer.toString(prevValue));
+					prevValue = admin.setPasscodeMinNumberComplexChars(newValue);
+					if (newValue != prevValue)
+						Profiles.logProfileChange(timeApplied, displayName, PrfConstants.PAYLOADVALUE_pw_mincomplexchars,
+								Integer.toString(newValue), Integer.toString(prevValue));
+					prevValue = admin.setPasscodeMinNumberNumericChars(newValue);
+					if (newValue != prevValue)
+						Profiles.logProfileChange(timeApplied, displayName, PrfConstants.PAYLOADVALUE_pw_minnumericchars,
+								Integer.toString(newValue), Integer.toString(prevValue));
+					prevValue = admin.setPasscodeMinNumberNonLetterChars(newValue);
+					if (newValue != prevValue)
+						Profiles.logProfileChange(timeApplied, displayName, PrfConstants.PAYLOADVALUE_pw_minnonletterchars,
+								Integer.toString(newValue), Integer.toString(prevValue));
 				}
-				
+
+				Controller.getInstance(context).getDeviceAdmin().showPasswordPromptCheck();
+
+
 			} catch (Exception ex) {
 				cmdResult.setException(ex);
 				bIsOK = false;

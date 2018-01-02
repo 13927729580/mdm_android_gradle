@@ -46,7 +46,7 @@ public class PrfConstants {
 	public final static String PAYLOADVALUE_pw_mincomplexchars  = "min_complex_chars";
 	public final static String PAYLOADVALUE_pw_minnumericchars	 = "min_numeric_chars";
 	public final static String PAYLOADVALUE_pw_minnonletterchars= "min_non_letter_chars";
-	
+
 	public final static String PAYLOADVALUE_pw_passcodequality = "passcode_quality";
 	public final static String PAYLOADVALUE_pwquality_none		= "none";
 	public final static String PAYLOADVALUE_pwquality_any 		= "any";

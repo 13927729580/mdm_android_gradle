@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lightspeedsystems.mdm"
     android:versionCode="8"
-    android:versionName="01.05.2017.b23"
+    android:versionName="01.06.2017.b25"
     android:installLocation="internalOnly">
 
     <uses-sdk
@@ -129,6 +129,10 @@
             		android:resource="@xml/security_policies" />
             <intent-filter>
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+                <action android:name="android.app.action.ACTION_PASSWORD_CHANGED" />
+                <action android:name="android.app.action.ACTION_PASSWORD_EXPIRING" />
+                <action android:name="android.app.action.ACTION_PASSWORD_FAILED" />
+                <action android:name="android.app.action.ACTION_PASSWORD_SUCCEEDED" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.app.action.PROFILE_PROVISIONING_COMPLETE" />

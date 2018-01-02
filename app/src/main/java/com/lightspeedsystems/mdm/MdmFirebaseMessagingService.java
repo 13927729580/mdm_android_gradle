@@ -67,21 +67,22 @@ public class MdmFirebaseMessagingService  extends FirebaseMessagingService{
         // first, make sure the controller thread is started up: (it registers to receive gcm messages)
         // (simply get the instance for it, that makes sure it's there and started:)
         Controller controller = Controller.getInstance(context);
-        /**
+
          if (controller != null && !controller.isMdmReady() && controller.isSystemReady()) {
-         LSLogger.debug(TAG, "Waiting for controller to initialize.");
-         // controller was just created, so we need to give it a little time to get ready.
-         for (int i=10; i>0 && !controller.isMdmReady(); i--) {
-         try {
-         Thread.sleep(1000);
-         } catch (Exception ex) {
-         LSLogger.exception(TAG, "notifyController wait exception:", ex);
+             LSLogger.debug(TAG, "Waiting for controller to initialize.");
+             // controller was just created, so we need to give it a little time to get ready.
+             for (int i=10; i>0 && !controller.isMdmReady(); i--) {
+                 try {
+                     Thread.sleep(500);
+                 } catch (Exception ex) {
+                     LSLogger.exception(TAG, "notifyController wait exception:", ex);
+                 }
+             }
+             if (!controller.isMdmReady())
+                 LSLogger.warn(TAG, "Controller is not ready. GCM message may be ignored.");
          }
-         }
-         if (!controller.isMdmReady())
-         LSLogger.warn(TAG, "Controller is not ready. GCM message may be ignored.");
-         }
-         **/
+
+        LSLogger.debug(TAG, "Sending Broadcast.");
         // now, create an intent and send it so the controller can receive it in its own thread:
         Intent intent = new Intent(GCM_NOTIFICATION_MESSAGE);
         intent.putExtra(EXTRA_MSGTYPE, actiontype);
