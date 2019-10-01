@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lightspeedsystems.mdm"
-    android:versionCode="8"
-    android:versionName="01.06.2017.b25"
+    android:versionCode="11"
+    android:versionName="01.09.2019.b31"
     android:installLocation="internalOnly">
 
-    <uses-sdk
-        android:minSdkVersion="15"
-        android:targetSdkVersion="17" />
-   
-    
-    <!-- Permission to access various device information: --> 
+    <uses-sdk android:targetSdkVersion="17" />
+
+
+    <!-- Permission to access various device information: -->
  	<uses-permission android:name="android.permission.READ_PHONE_STATE" /> 
 
  	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> 
@@ -54,9 +52,11 @@
 	--> 
  	
     <!-- GCM Support: -->
-	<permission android:name="com.lightspeedsystems.mdm.permission.C2D_MESSAGE" 
+    <!--
+	<permission android:name="com.lightspeedsystems.mdm.permission.C2D_MESSAGE"
 		android:protectionLevel="signature" />
 	<uses-permission android:name="com.lightspeedsystems.mdm.permission.C2D_MESSAGE" />
+	-->
 	<!-- App receives GCM messages. -->
 	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 		<!-- GCM connects to Google Services. -->
@@ -75,7 +75,7 @@
         android:enabled="true">
         
         <!-- android:theme="@style/AppTheme" -->
-     
+
          <activity
             android:name=".MainActivity"  android:theme="@style/FullscreenTheme" 
             android:label="@string/app_name"
@@ -160,15 +160,16 @@
 	
 		<service android:name=".MdmFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />;
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+        <!--
         <service android:name=".MdmFirebaseInstanceIdService" android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />;
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
+        -->
 		<!--  Accounts authenticator service, for email/exchange support; not implemented in current version.
 		<service android:name=".AccountAuthenticatorService"
  			android:exported="true" 

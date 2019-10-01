@@ -52,6 +52,12 @@ public class MdmFirebaseMessagingService  extends FirebaseMessagingService{
 
     }
 
+    @Override
+    public void onNewToken(String token) {
+        LSLogger.debug(TAG, "onNewToken  token "+token);
+        Settings.getInstance(this.getBaseContext()).setGcmID(token);
+    }
+
     /**
      * Notifies Controller to handle a gcm message.
      * <p>

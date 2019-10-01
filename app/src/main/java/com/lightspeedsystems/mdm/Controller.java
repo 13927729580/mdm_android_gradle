@@ -17,7 +17,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
-import android.support.v4.app.ActivityCompat;
+import androidx.core.app.ActivityCompat;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -1556,7 +1556,7 @@ public class Controller extends Thread { //implements ServiceConnection {
 	public void requestServerSync(boolean sendAllData, ThreadCompletionCallback callback) {
 		enqueueCommand(new ServerSyncCommand(this, sendAllData, callback));
 		// also, let's re-sync app info, just send a delta of the data.
-		requestAppsListSync(false, null);
+		// requestAppsListSync(false, null);
 		try {
 			this.interrupt();
 		} catch (Exception ex) {

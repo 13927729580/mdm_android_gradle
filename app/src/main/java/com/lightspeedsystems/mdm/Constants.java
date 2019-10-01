@@ -5,10 +5,10 @@ package com.lightspeedsystems.mdm;
  */
 public class Constants {
 	static final int APPLICATION_VERSION_major = 1;
-	static final int APPLICATION_VERSION_minor = 5;
-	static final int APPLICATION_VERSION_build = 2017;  // aug 15, 2014
+	static final int APPLICATION_VERSION_minor = 9;
+	static final int APPLICATION_VERSION_build = 2019;  // aug 15, 2014
 	
-	public static final String APPLICATION_VERSION_STR = "01.05.2017.b23";
+	public static final String APPLICATION_VERSION_STR = "01.09.2019.b31";
 
 	public static final String PACKAGE_NAME = "com.lightspeedsystems.mdm";
 	
