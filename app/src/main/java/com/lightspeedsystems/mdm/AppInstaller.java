@@ -169,7 +169,8 @@ public class AppInstaller extends Activity  {
 	    	if (app.getInstallType() == App.INSTALLTYPE_ONLINESTORE) {
 	    		installIntent = new Intent(Intent.ACTION_VIEW);
 	    	} else { // installing by file; we can use the package installer for this.
-	    		installIntent = new Intent(Intent.ACTION_INSTALL_PACKAGE);	    	
+				installIntent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
+	    		installIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 	    		installIntent.setType("application/vnd.android.package-archive");
 	    	}
 	//		installIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK 

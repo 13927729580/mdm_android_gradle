@@ -20,6 +20,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
 
+import androidx.core.content.FileProvider;
+
 /**
  * Collection and convenience methods for applications (App instances).
  * This base class is implemented to support managed apps. Subclassed implementations (ie, DeviceApps) 
@@ -382,9 +384,14 @@ public class Apps {
 		
 		if (!bInstalled) { // revert to the default interactive installation process:
 			try {
-			
+
 				Uri fileuri = Uri.parse(appUriStr);
-				 
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+					File file = new File(fileuri.getPath());
+					fileuri = FileProvider.getUriForFile(Utils.getApplicationContext(), BuildConfig.APPLICATION_ID + ".provider",
+							file);
+				}
+
 				// code to directly trigger our 'installer' activity internally:
 				Intent intent = new Intent(Constants.ACTION_APPINSTALL);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

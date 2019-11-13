@@ -102,7 +102,7 @@ public class MainActivity extends Activity implements ProgressCallbackInterface,
 
 	void checkPermissions(){
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-			int permission = ContextCompat.checkSelfPermission(this,android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+			int permission = ActivityCompat.checkSelfPermission(this,android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
 			if (permission != PackageManager.PERMISSION_GRANTED){
 /*

@@ -5,7 +5,9 @@ package com.lightspeedsystems.mdm;
 
 import java.util.Locale;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.lightspeedsystems.mdm.util.LSLogger;
+import com.lightspeedsystems.mdm.util.StorageUtil;
 
 import android.content.Context;
 import android.content.ContentResolver;
@@ -285,6 +287,13 @@ public class Device {
 		if (settings != null) {
 			sn = settings.getDeviceSerialNumber();
 			if (sn == null) {
+				String savedSerialId = StorageUtil.getSerialId();
+				if(savedSerialId.isEmpty()) {
+					savedSerialId  = FirebaseInstanceId.getInstance().getToken();
+					StorageUtil.saveSerialId(savedSerialId);
+				}
+				sn = savedSerialId;
+/*
 				// we have no serial number; read it from the device:
 				sn = Build.SERIAL;
 				// if the serial number is not valid, we'll create a good one:
@@ -297,6 +306,7 @@ public class Device {
 						sn = getDeviceUDID();
 					}
 				}
+*/
 				// since we now have a serial number, save it!
 				settings.setDeviceSerialNumber(sn);
 			} // else we use the previously-saved serial number, whatever it is.

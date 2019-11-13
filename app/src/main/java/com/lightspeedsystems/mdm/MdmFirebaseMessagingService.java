@@ -9,6 +9,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.lightspeedsystems.mdm.util.LSLogger;
+import com.lightspeedsystems.mdm.util.StorageUtil;
 
 /**
  * Created by Robert T. Wilson on 5/26/16.
@@ -56,6 +57,17 @@ public class MdmFirebaseMessagingService  extends FirebaseMessagingService{
     public void onNewToken(String token) {
         LSLogger.debug(TAG, "onNewToken  token "+token);
         Settings.getInstance(this.getBaseContext()).setGcmID(token);
+        String serialNumber = Settings.getInstance(this.getBaseContext()).getDeviceSerialNumber();
+        if (serialNumber == null) {
+            String savedSerialId = StorageUtil.getSerialId();
+            if(savedSerialId.isEmpty()) {
+                StorageUtil.saveSerialId(token);
+            } else {
+                Settings.getInstance(this.getBaseContext()).setDeviceSerialNumber(savedSerialId);
+                Settings.getInstance(this.getBaseContext()).setDeviceUdid(savedSerialId);
+            }
+        }
+
     }
 
     /**

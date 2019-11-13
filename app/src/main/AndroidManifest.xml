@@ -9,9 +9,11 @@
 
 
     <!-- Permission to access various device information: -->
- 	<uses-permission android:name="android.permission.READ_PHONE_STATE" /> 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PRIVLEDGED_PHONE_STATE" />
 
- 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> 
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
  	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> 
  	<uses-permission android:name="android.permission.READ_SECURE_SETTINGS" /> 
 <!-- system_perm: <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" /> --> 
@@ -30,6 +32,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
 
     <!-- Process control, including finding and killing processes:
     <uses-permission android:name="android.permission.GET_TASKS" />
@@ -181,7 +185,16 @@
 			      android:resource="@xml/authenticator" />
 		</service>
 		-->
-		
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+
     </application>
 
 </manifest>
